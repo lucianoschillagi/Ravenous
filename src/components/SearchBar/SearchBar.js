@@ -19,12 +19,10 @@ class SearchBar extends React.Component {
       let sortByOptionValue = sortByOptions[sortByOption]; // 👏
     });
   }
-  
+
   // render method
   render() {
-    return(
-
-    )
+    return <li key={sortByOptionValue}>{sortByOption}</li>
   }
 }
 
