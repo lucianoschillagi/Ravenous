@@ -10,6 +10,11 @@ const sortByOptions = {
 }
 
 class SearchBar extends React.Component {
+  // render sort by options method
+  renderSortByOptions() {
+    // accede a las claves del objeto 'sortByOptions'
+    return Object.keys(sortByOptions) // Keys: 'Best Match', 'Highest Rated', 'Most Reviewed'
+  }
   // render method
   render() {
     return(
