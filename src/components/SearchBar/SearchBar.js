@@ -18,11 +18,31 @@ class SearchBar extends React.Component {
       // de las búsquedas por opción
       let sortByOptionValue = sortByOptions[sortByOption]; // 👏
     });
-  }
 
+    return <li key={sortByOptionValue}>{sortByOption}</li>
+
+  }
+  
   // render method
   render() {
-    return <li key={sortByOptionValue}>{sortByOption}</li>
+    return (
+      // HTML (JSX)
+      <div className="SearchBar">
+        <div className="SearchBar-sort-options">
+          <ul>
+            {/* llama al método renderSortByOptions()  */}
+            renderSortByOptions()
+          </ul>
+        </div>
+        <div className="SearchBar-fields">
+          <input placeholder="Search Businesses" />
+          <input placeholder="Where?" />
+        </div>
+        <div className="SearchBar-submit">
+          <a>Let's Go</a>
+        </div>
+      </div>
+    )
   }
 }
 
