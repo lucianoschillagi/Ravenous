@@ -42,3 +42,6 @@ class Business extends React.Component {
     );
   }
 }
+
+// deja el componente listo para que cualquier otro componente lo pueda usar
+export default Business;
