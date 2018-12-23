@@ -2,7 +2,7 @@
 import React from 'react';
 import './Business.css';
 
-// crea una objeto 'business' que contiene información estática
+// crea una objeto (JSON) 'business' que contiene información estática
 const business = {
   imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
   name: 'MarginOtto Pizzeria',
@@ -13,7 +13,7 @@ const business = {
   category: 'Italian',
   rating: 4.5,
   reviewCount: 90
-}
+};
 
 // las 'instrucciones' para crear un componente 'Business'...
 class Business extends React.Component {
@@ -21,7 +21,7 @@ class Business extends React.Component {
   // render method
   render() {
     return (
-      // HTML (JSX)
+      // inyect HTML (JSX)
       <div className="Business">
           <div className="image-container">
             <img src={business.imageSrc} alt=''/>
