@@ -22,12 +22,11 @@ class SearchBar extends React.Component {
   // render method
   render() {
     return (
-      // HTML (JSX)
+      // inject HTML (JSX)
       <div className="SearchBar">
         <div className="SearchBar-sort-options">
           <ul>
-            {/* llama al método renderSortByOptions()  */}
-            renderSortByOptions()
+            {this.renderSortByOptions()}
           </ul>
         </div>
         <div className="SearchBar-fields">
