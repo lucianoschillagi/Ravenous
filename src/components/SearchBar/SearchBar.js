@@ -2,6 +2,12 @@
 import React from 'react';
 import './SearchBar.css';
 
+/*
+TODO: 
+Inside of the constructor, set the initial state of the search bar.
+Use this.state and set it equal to an empty object.
+*/
+
 // un objeto que contiene las diferentes opciones de búsqueda 
 const sortByOptions = {
   'Best Match': 'best_match',
@@ -14,6 +20,8 @@ class SearchBar extends React.Component {
   // constructor method
   constructor(props) {
     super(props);
+    // pone el estado inicial del componente (por ahora a un objeto vacío)
+    this.state = {};
   }
 
   renderSortByOptions() {
