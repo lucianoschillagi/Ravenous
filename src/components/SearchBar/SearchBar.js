@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
   // constructor method
   constructor(props) {
     super(props);
-    // pone el estado inicial del componente (por ahora a un objeto vacío)
+    // establece el estado inicial del componente
     this.state = {
       'term': '',
       'location': '',
@@ -33,6 +33,19 @@ class SearchBar extends React.Component {
       let sortByOptionValue = sortByOptions[sortByOption]; // 👏
       return <li key={sortByOptionValue}>{sortByOption}</li>
     });
+  }
+
+  // task: estilizar la opción seleccionada actualmente
+  getSortByClass(sortByOptions) {
+    /*
+    Inside, use an if statement to check if the state value of sortBy is equal to the provided sortByOption. 
+    If it is, return 'active', otherwise, return an empty string ('').
+    */
+    if (sortBy == sortByOption) {
+      return 'active';
+    } else {
+      return '';
+    }
   }
   
   render() {
