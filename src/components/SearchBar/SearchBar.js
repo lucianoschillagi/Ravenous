@@ -21,7 +21,11 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     // pone el estado inicial del componente (por ahora a un objeto vacío)
-    this.state = {};
+    this.state = {
+      'term': '',
+      'location': '',
+      'sortBy': 'best_match'
+    };
   }
 
   renderSortByOptions() {
