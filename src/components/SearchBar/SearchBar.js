@@ -11,6 +11,11 @@ const sortByOptions = {
 
 class SearchBar extends React.Component {
 
+  // constructor method
+  constructor(props) {
+    super(props);
+  }
+
   renderSortByOptions() {
     return Object.keys(sortByOptions).map(sortByOption => {
       let sortByOptionValue = sortByOptions[sortByOption]; // 👏
