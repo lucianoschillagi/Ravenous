@@ -22,14 +22,16 @@ class SearchBar extends React.Component {
 
   getSortByClass(sortByOption) {
     if (sortByOption === this.state.sortBy) {
-      return 'active',
-    }
+      return 'active';
+    }  
     return '';
-
   }
 
   // task: maneja el ordenamiento de acuerdo a la opción elegida
   handleSortByChange(sortByOption) {
+    // actualiza el estado del objeto, específicamente el valor de la 
+    // propiedad 'sortBy'
+    this.setState({ sortBy:sortByOption });
 
   }
 
