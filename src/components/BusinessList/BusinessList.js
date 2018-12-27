@@ -8,9 +8,14 @@ class BusinessList extends React.Component {
     return(
       // HMTL (JSX)
       <div className="BusinessList">
-        { this.props.businesses.map(business => {
-          return <Business business={business} />;
-        }) }
+        <Business />
+        <Business />
+        <Business />
+        <Business />
+        <Business />
+        <Business />
+        <Business />
+        <Business />
       </div>
     );
   }
