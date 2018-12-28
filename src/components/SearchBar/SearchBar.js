@@ -32,13 +32,17 @@ class SearchBar extends React.Component {
     // actualiza el estado del objeto, específicamente el valor de la 
     // propiedad 'sortBy'
     this.setState({ sortBy:sortByOption });
-
   }
 
+  // TODO: estudiar bien este método antes de seguir avanzando...
   renderSortByOptions() {
     return Object.keys(sortByOptions).map(sortByOption => {
       let sortByOptionValue = sortByOptions[sortByOption]; // 👏
-      return <li key={sortByOptionValue}>{sortByOption}</li>
+      return <li 
+              key={sortByOptionValue} 
+              onClick={this.handleSortByChange.bind(this.sortByOptionValue)} 
+              className={this.getSortByClass(sortByOptionValue)}>{sortByOption}
+              </li>;
     });
   }
   
