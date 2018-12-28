@@ -5,6 +5,12 @@ import SearchBar from './components/SearchBar/SearchBar';
 import BusinessList from './components/BusinessList/BusinessList';
 
 class App extends React.Component {
+
+  // task: configurar el tipo de búsqueda que puede realizar el usuario
+  searchYelp(term, location, sortBy) {
+
+  }
+
   render() {
     return (
       // inject JSX (HTML)
