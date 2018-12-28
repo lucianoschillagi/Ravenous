@@ -18,14 +18,25 @@ class SearchBar extends React.Component {
       location: '',
       sortBy: 'best_match',
     };
+
+    // enlaza los métodos definidos fuera del constructor con el constructor
+    this.handleTermChange = this.handleTermChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
+
   }
 
+  // task: manejar la información ingresada por el usuario en el
+  // placeholder 'Search Business'
   handleTermChange(event) {
-    this.setState({});
+    // le pasa a la propiedad 'term' el valor obtenido
+    this.setState({ term: event.target.value});
   }
 
+  // task: manejar la información ingresada por el usuario en el
+  // placeholder 'Where?'
   handleLocationChange(event) {
-    this.setState({});
+    // le pasa a la propiedad 'location' el valor obtenido
+    this.setState({ location: event.target.value});
   }
 
   getSortByClass(sortByOption) {
