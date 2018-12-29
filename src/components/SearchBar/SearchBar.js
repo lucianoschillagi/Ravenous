@@ -69,6 +69,7 @@ class SearchBar extends React.Component {
     });
   }
   
+  // render method
   render() {
     return (
       // inject HTML (JSX)
