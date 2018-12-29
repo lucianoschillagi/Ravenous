@@ -22,7 +22,12 @@ class SearchBar extends React.Component {
     // enlaza los métodos definidos fuera del constructor con el constructor
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+  }
 
+  handleSearch(event) {
+    this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+    event.preventDefault();
   }
 
   // task: manejar la información ingresada por el usuario en el
@@ -60,8 +65,7 @@ class SearchBar extends React.Component {
       return <li 
               key={sortByOptionValue} 
               onClick={this.handleSortByChange.bind(this.sortByOptionValue)} 
-              className={this.getSortByClass(sortByOptionValue)}>{sortByOption}
-              </li>;
+              className={this.getSortByClass(sortByOptionValue)}>{sortByOption} </li>;
     });
   }
   
@@ -79,7 +83,7 @@ class SearchBar extends React.Component {
           <input placeholder="Where?" onChange={this.handleLocationChange} />
         </div>
         <div className="SearchBar-submit">
-          <a href="www.#.com">Let's Go</a>
+          <a href="www.#.com" onClick={this.handleSearch}>Let's Go</a>
         </div>
       </div>
     )
