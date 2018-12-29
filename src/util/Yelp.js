@@ -11,6 +11,16 @@ const yelp = {
     return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, { 
       headers: {
         Authorization: `Bearer ${apiKey}` 
+      },
+    }).then((response) => {
+      // convierte la respuesta en un JSON
+      return response.json();
+    }).then((jsonResponse) => {
+      // comprueba que la respuesta contenga la clave 'businesses'
+      if (jsonResponse.businesses) {
+
       }
-    });  }
-};
+
+    })
+  }
+}
