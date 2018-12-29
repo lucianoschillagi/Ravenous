@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar/SearchBar';
 import BusinessList from './components/BusinessList/BusinessList';
+import Yelp from './util/Yelp';
 
 // crea una objeto (JSON) 'business' que contiene información estática
 const business = {
