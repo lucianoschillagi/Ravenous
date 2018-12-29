@@ -18,9 +18,24 @@ const yelp = {
     }).then((jsonResponse) => {
       // comprueba que la respuesta contenga la clave 'businesses'
       if (jsonResponse.businesses) {
-
+        return jsonResponse.businesses.map(((business) => {
+          return {
+            // extrae los datos deseados 👏
+            id: business.id,
+            imageSrc: business.image_url,
+            name: business.name,
+            adress: business.location.adress1,
+            city: business.location.city,
+            state: business.location.state,
+            zipCode: business.location.zip_Code,
+            category: business.categories[0].title,
+            rating: business.rating,
+            reviewCount: business.review_count,
+          }
+        }));
       }
-
     })
   }
 }
+
+export default yelp;
