@@ -4,3 +4,8 @@ const apiKey = 'Ssaq3XDGkTE3OqPbfFl8WGpH79L2b4OxDqFz9aUMbzn6n51gCUL4YAlzLyTUBlik
 
 // This object will store the functionality needed to interact with the Yelp API.
 const Yelp = {};
+
+// This is the method we'll use to retrieve search results from the Yelp API.
+function search(term, location, sortBy) {
+  
+}
