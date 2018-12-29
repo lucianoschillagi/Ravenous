@@ -10,13 +10,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      businesses = [],
-    }
-  }
+      businesses: [],
+    };
+    this.searchYelp = this.searchYelp.bind(this);
+  };
 
   // task: configurar el tipo de búsqueda que puede realizar el usuario
   searchYelp(term, location, sortBy) {
     console.log(`You are searching for ${term}, ${location}, and ${sortBy}`);
+    Yelp.searchYelp(term, location, sortBy).then((businesses) => {
+      this.searchYelp( {businesses: businesses});
+    });
   }
 
   render() {
@@ -25,7 +29,7 @@ class App extends React.Component {
       <div className="App">
         <h1>ravenous</h1>
         < SearchBar searchYelp={this.searchYelp} />
-        < BusinessList businesses={businesses} />
+        < BusinessList businesses={this.state.businesses} />
       </div>
     );
   }
