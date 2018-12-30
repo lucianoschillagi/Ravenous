@@ -16,10 +16,12 @@ class App extends React.Component {
     this.searchYelp = this.searchYelp.bind(this);
   }
 
-  // task: configurar el tipo de búsqueda que puede realizar el usuario
+  // task: configurar el tipo de búsqueda que puede realizar el usuario.
+  // que puede ser por término, ubicación o ordenado por (tres opciones disponibles)
   searchYelp(term, location, sortBy) {
-    Yelp.searchYelp(term, location, sortBy).then((businesses) => {
-      this.searchYelp( {businesses: businesses});
+    console.log(`${term}, ${location} , ${sortBy}`)
+    Yelp.search(term, location, sortBy).then(businesses => {
+      this.setState({businesses: businesses});
     });
   }
 

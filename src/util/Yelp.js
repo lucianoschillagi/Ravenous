@@ -5,37 +5,30 @@ const apiKey = 'Ssaq3XDGkTE3OqPbfFl8WGpH79L2b4OxDqFz9aUMbzn6n51gCUL4YAlzLyTUBlik
 
 // This object will store the functionality needed to interact with the Yelp API.
 const Yelp = {
-  // This is the method we'll use to retrieve search results from the Yelp API.
-  searchYelp(term, location, sortBy) {
-    // endpoint: https://api.yelp.com/v3/businesses/search?...
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, { 
+  search(term, location, sortBy) {
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {
       headers: {
-        Authorization: `Bearer ${apiKey}` 
-      },
-    }).then((response) => {
-      // convierte la respuesta en un JSON
+        Authorization: `Bearer ${apiKey}`
+      }
+    }).then(response => {
       return response.json();
-    }).then((jsonResponse) => {
-      // comprueba que la respuesta contenga la clave 'businesses'
+    }).then(jsonResponse => {
       if (jsonResponse.businesses) {
-        return jsonResponse.businesses.map(((business) => {
-          return {
-            // extrae los datos deseados 👏
-            id: business.id,
-            imageSrc: business.image_url,
-            name: business.name,
-            adress: business.location.adress1,
-            city: business.location.city,
-            state: business.location.state,
-            zipCode: business.location.zip_Code,
-            category: business.categories[0].title,
-            rating: business.rating,
-            reviewCount: business.review_count,
-          }
+        return jsonResponse.businesses.map(business => ({
+          id: business.id,
+          imageSrc: business.image_url,
+          name: business.name,
+          address: business.location.address1,
+          city: business.location.city,
+          state: business.location.state,
+          zipCode: business.location.zip_code,
+          category: business.categories[0].title,
+          rating: business.rating,
+          reviewCount: business.review_count
         }));
       }
-    })
+    });
   }
-}
+};
 
 export default Yelp;

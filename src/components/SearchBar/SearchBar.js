@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
       location: '',
       sortBy: 'best_match',
     };
-    // bind methods
+    // vincula los métodos dentro del constructor (para que formen parte del componente)
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -39,16 +39,19 @@ class SearchBar extends React.Component {
   }
 
   // task: manejar la información ingresada por el usuario en el
-  // placeholder 'Search Business'
+  // placeholder 'Search Businesses'
   handleTermChange(event) {
     // le pasa a la propiedad 'term' el valor obtenido
     this.setState({ term: event.target.value});
   }
   
+  // task: manejar la información ingresada por el usuario en el
+  // placeholder 'Where?'
   handleLocationChange(event) {
     this.setState({location: event.target.value});
   }
 
+  // task: realizar la búsqueda de acuerdo a la interacción del usuario
   handleSearch(event) {
     this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
     event.preventDefault();
@@ -79,7 +82,7 @@ class SearchBar extends React.Component {
           <input placeholder="Where?" onChange={this.handleLocationChange} />
         </div>
         <div className="SearchBar-submit">
-          <a href="www.#.com" onClick={this.handleSearch}>Let's Go</a>
+          <a onClick={this.handleSearch}>Let's Go</a>
         </div>
       </div>
     )
