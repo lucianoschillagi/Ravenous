@@ -3,6 +3,7 @@ import React from 'react';
 import './BusinessList.css';
 import Business from '../Business/Business';
 
+// Abstract: representa un listado de negocios (el resultado de la búsqueda).
 class BusinessList extends React.Component {
   render() {
     return(

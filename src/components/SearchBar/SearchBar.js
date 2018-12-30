@@ -2,46 +2,29 @@
 import React from 'react';
 import './SearchBar.css';
 
-// un objeto que contiene las diferentes opciones de búsqueda 
-const sortByOptions = {
-  'Best Match': 'best_match',
-  'Highest Rated': 'rating',
-  'Most Reviewed': 'review_count'
-};
-
+// Abstract: una barra de búsqueda para que el usuario busque y obtenga
+// resultados de acuerdo a ciertos criterios de búsqueda.
 class SearchBar extends React.Component {
-
+  
   constructor(props) {
     super(props);
+    // el estado inicial de componente
     this.state = {
       term: '',
       location: '',
       sortBy: 'best_match',
     };
-
-    // enlaza los métodos definidos fuera del constructor con el constructor
+    // bind methods
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-  }
+    this.handleSortByChange = this.handleSortByChange.bind(this);
 
-  handleSearch(event) {
-    this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-    event.preventDefault();
-  }
-
-  // task: manejar la información ingresada por el usuario en el
-  // placeholder 'Search Business'
-  handleTermChange(event) {
-    // le pasa a la propiedad 'term' el valor obtenido
-    this.setState({ term: event.target.value});
-  }
-
-  // task: manejar la información ingresada por el usuario en el
-  // placeholder 'Where?'
-  handleLocationChange(event) {
-    // le pasa a la propiedad 'location' el valor obtenido
-    this.setState({ location: event.target.value});
+    this.sortByOptions = {
+      'Best Match': 'best_match',
+      'Highest Rated': 'rating',
+      'Most Reviewed': 'review_count'
+    };
   }
 
   getSortByClass(sortByOption) {
@@ -51,25 +34,37 @@ class SearchBar extends React.Component {
     return '';
   }
 
-  // task: maneja el ordenamiento de acuerdo a la opción elegida
   handleSortByChange(sortByOption) {
-    // actualiza el estado del objeto, específicamente el valor de la 
-    // propiedad 'sortBy'
-    this.setState({ sortBy:sortByOption });
+    this.setState({sortBy: sortByOption});
   }
 
-  // TODO: estudiar bien este método antes de seguir avanzando...
+  // task: manejar la información ingresada por el usuario en el
+  // placeholder 'Search Business'
+  handleTermChange(event) {
+    // le pasa a la propiedad 'term' el valor obtenido
+    this.setState({ term: event.target.value});
+  }
+  
+  handleLocationChange(event) {
+    this.setState({location: event.target.value});
+  }
+
+  handleSearch(event) {
+    this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+    event.preventDefault();
+  }
+
   renderSortByOptions() {
-    return Object.keys(sortByOptions).map(sortByOption => {
-      let sortByOptionValue = sortByOptions[sortByOption]; // 👏
-      return <li 
-              key={sortByOptionValue} 
-              onClick={this.handleSortByChange.bind(this.sortByOptionValue)} 
-              className={this.getSortByClass(sortByOptionValue)}>{sortByOption} </li>;
+    return Object.keys(this.sortByOptions).map(sortByOption => {
+      let sortByOptionValue = this.sortByOptions[sortByOption];
+      return (<li className={this.getSortByClass(sortByOptionValue)}
+                  key={sortByOptionValue}
+                  onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>
+                {sortByOption}
+             </li>);
     });
   }
   
-  // render method
   render() {
     return (
       // inject HTML (JSX)
